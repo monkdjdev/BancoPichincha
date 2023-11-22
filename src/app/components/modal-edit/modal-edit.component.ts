@@ -116,10 +116,10 @@ export class ModalEditComponent implements OnInit{
     if (this.productForm.valid) {
       if (this.data) {
         this._dataService
-          .updateEmployee(this.data.id, this.productForm.value)
+          .updateProduct(this.data.id, this.productForm.value)
           .subscribe({
             next: (val: any) => {
-              this._coreService.openSnackBar('Employee detail updated!');
+              this._coreService.openSnackBar('Información del producto actualizada!');
               this._dialogRef.close(true);
             },
             error: (err: any) => {
@@ -127,9 +127,9 @@ export class ModalEditComponent implements OnInit{
             },
           });
       } else {
-        this._dataService.addEmployee(this.productForm.value).subscribe({
+        this._dataService.addProduct(this.productForm.value).subscribe({
           next: (val: any) => {
-            this._coreService.openSnackBar('Employee added successfully');
+            this._coreService.openSnackBar('Producto agregado correctamente');
             this._dialogRef.close(true);
           },
           error: (err: any) => {
