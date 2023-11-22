@@ -38,7 +38,7 @@ export class DataTableComponent implements OnInit {
     this.getEmployeeList();
   }
 
-  openAddEditEmpForm() {
+  openAddEditProductForm() {
     const dialogRef = this._dialog.open(ModalEditComponent);
     dialogRef.afterClosed().subscribe({
       next: (val) => {
@@ -49,8 +49,8 @@ export class DataTableComponent implements OnInit {
     });
   }
 
-  getEmployeeList() {
-    this._dataService.getEmployeeList().subscribe({
+  getProductList() {
+    this._dataService.getProductList().subscribe({
       next: (res) => {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.sort = this.sort;
@@ -71,7 +71,7 @@ export class DataTableComponent implements OnInit {
     }
   }
 
-  deleteEmployee(id: number, productName: string) {
+  deleteProduct(id: number, productName: string) {
     const dialogRef = this._dialog.open(ConfirmationModalComponent, {
       width: '400px',
       height: '200px',
@@ -80,10 +80,10 @@ export class DataTableComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this._dataService.deleteEmployee(id).subscribe({
+        this._dataService.deleteProduct(id).subscribe({
           next: (res) => {
             this._coreService.openSnackBar('Employee deleted!', 'done');
-            this.getEmployeeList();
+            this.getProductList();
           },
           error: (err) => {
             console.error(err);
@@ -103,7 +103,7 @@ export class DataTableComponent implements OnInit {
     dialogRef.afterClosed().subscribe({
       next: (val) => {
         if (val) {
-          this.getEmployeeList();
+          this.getProductList();
         }
       },
     });
