@@ -1,0 +1,118 @@
+<div mat-dialog-title class="title-container">
+  <h1>Formulario de registro</h1>
+  <div class="title-line"></div>
+</div>
+
+<form [formGroup]="productForm" (ngSubmit)="onFormSubmit()">
+  <div mat-dialog-content class="content">
+    <div class="row">
+      <div class="column">
+        <mat-form-field appearance="outline">
+          <mat-label>ID</mat-label>
+          <input matInput type="text" placeholder="id" formControlName="id">
+          <mat-error *ngIf="productForm.get('id')?.hasError('required')">
+            ID es requerido!
+          </mat-error>
+          <mat-error *ngIf="productForm.get('id')?.hasError('minlength')">
+            ID debe tener al menos 3 caracteres.
+          </mat-error>
+          <mat-error *ngIf="productForm.get('id')?.hasError('maxlength')">
+            ID no puede tener más de 10 caracteres.
+          </mat-error>
+          <mat-error *ngIf="productForm.get('id')?.hasError('idExists')">
+            Este ID ya existe.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="column">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Nombre" formControlName="name">
+          <mat-error *ngIf="productForm.get('name') && productForm.get('name')?.hasError('required')">
+            Este campo es requerido!.
+          </mat-error>
+          <mat-error *ngIf="productForm.get('name')?.hasError('minlength')">
+            El nombre debe tener al menos 5 caracteres.
+          </mat-error>
+          <mat-error *ngIf="productForm.get('name')?.hasError('maxlength')">
+            El nombre no puede tener más de 100 caracteres.
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column">
+        <mat-form-field appearance="outline">
+          <mat-label>Descripción</mat-label>
+          <input matInput type="text" placeholder="Descripción" formControlName="description">
+          <mat-error *ngIf="productForm.get('description') && productForm.get('description')?.hasError('required')">
+            Este campo es requerido!.
+          </mat-error>
+          <mat-error *ngIf="productForm.get('description')?.hasError('minlength')">
+            La descripción debe tener al menos 10 caracteres.
+          </mat-error>
+          <mat-error *ngIf="productForm.get('description')?.hasError('maxlength')">
+            La descripción no puede tener más de 200 caracteres.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="column">
+        <mat-form-field appearance="outline">
+          <mat-label>Logo</mat-label>
+          <input matInput type="text" placeholder="Logo" formControlName="logo">
+          <mat-error *ngIf="productForm.get('logo') && productForm.get('logo')?.hasError('required')">
+            Este campo es requerido!.
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column datepicker">
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha de liberación</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="date_release">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="productForm.get('date_release')?.hasError('required')">
+            Este campo es requerido!.
+          </mat-error>
+          <mat-error *ngIf="productForm.get('date_release')?.hasError('dateBeforeToday')">
+            La fecha de liberación debe ser igual o mayor a la fecha actual.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="column datepicker">
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha de Revisión</mat-label>
+          <input matInput [matDatepicker]="picker2" formControlName="date_revision">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+          <mat-error *ngIf="productForm.get('date_revision')?.hasError('required')">
+            Este campo es requerido!.
+          </mat-error>
+          <mat-error *ngIf="productForm.get('date_revision')?.hasError('releaseDateRequired')">
+            La fecha de liberación es requerida antes de ingresar la fecha de revisión.
+          </mat-error>
+          <mat-error *ngIf="productForm.get('date_revision')?.hasError('invalidDate')">
+            La fecha seleccionada no es válida.
+          </mat-error>
+          <mat-error *ngIf="productForm.get('date_revision')?.hasError('invalidRevisionDate')">
+            La fecha de revisión debe ser exactamente un año posterior a la fecha de liberación.
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div mat-dialog-actions class="action">
+    <button mat-raised-button type="button" (click)="onReset()">Reiniciar</button>
+    <button mat-raised-button class="button-form" type="submit">{{data ? 'Actualizar': 'Envíar'}}</button>
+  </div>
+</form>

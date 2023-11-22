@@ -1,0 +1,53 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.main-body {
+  padding-top: 20px;
+  margin: 0 auto;
+  max-width: 1348px;
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.action {
+  display: flex;
+  gap: 5px;
+}
+
+.mat-elevation-z8 {
+  overflow-x: auto;
+}
+.main-body mat-form-field {
+  width: 15%;
+}
+
+.img{
+  width: 100px;
+  padding: 10px;
+}
+
+.filter{
+  display: flex;
+  justify-content: space-between;
+}
+
+.mat-mdc-button.mat-mdc-button-base, .mat-mdc-raised-button.mat-mdc-button-base, .mat-mdc-unelevated-button.mat-mdc-button-base, .mat-mdc-outlined-button.mat-mdc-button-base {
+  height: 60px;
+  background-color: yellow;
+}
+
+
+.result-paginator-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  margin-left: 10px;
+}
+
+.result-count {
+  font-size: 14px;
+  color: #555;
+}

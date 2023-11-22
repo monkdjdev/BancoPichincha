@@ -1,0 +1,25 @@
+.container{
+    padding-top: 50px;
+}
+
+.mat-dialog-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mat-dialog-actions {
+  margin-top: 16px;
+}
+
+.button-confirmar {
+  background-color: yellow;
+  color: white;
+  margin-left: 8px;
+}
+
+.title-line {
+  width: 100%;
+  border-bottom: 1px solid #000000;
+  margin-top: 10px;
+}
