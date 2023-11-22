@@ -9,19 +9,19 @@ import { Observable } from 'rxjs';
 export class DataService {
   constructor(private _http: HttpClient) {}
 
-  addEmployee(data: any): Observable<any> {
+  addProduct(data: any): Observable<any> {
     return this._http.post('http://localhost:3000/products', data);
   }
 
-  updateEmployee(id: number, data: any): Observable<any> {
+  updateProduct(id: number, data: any): Observable<any> {
     return this._http.put(`http://localhost:3000/products/${id}`, data);
   }
 
-  getEmployeeList(): Observable<any> {
+  getProductList(): Observable<any> {
     return this._http.get('http://localhost:3000/products');
   }
 
-  deleteEmployee(id: number): Observable<any> {
+  deleteProduct(id: number): Observable<any> {
     return this._http.delete(`http://localhost:3000/products/${id}`);
   }
 
