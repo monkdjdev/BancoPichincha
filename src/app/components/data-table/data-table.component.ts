@@ -82,12 +82,12 @@ export class DataTableComponent implements OnInit {
       if (result) {
         this._dataService.deleteProduct(id).subscribe({
           next: (res) => {
-            this._coreService.openSnackBar('Employee deleted!', 'done');
+            this._coreService.openSnackBar('Producto Eliminado!', 'done');
             this.getProductList();
           },
           error: (err) => {
             console.error(err);
-            this._coreService.openSnackBar('Error deleting employee', 'error');
+            this._coreService.openSnackBar('Error al eliminar el producto', 'error');
           },
         });
       }
